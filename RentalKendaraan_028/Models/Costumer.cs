@@ -19,5 +19,5 @@ namespace RentalKendaraan_028.Models
 
         public Gender IdGenderNavigation { get; set; }
         public ICollection<Peminjaman> Peminjaman { get; set; }
-    }
+    } 
 }
