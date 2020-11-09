@@ -18,6 +18,8 @@ namespace RentalKendaraan_028.Models
 
         [RegularExpression("^[0-9]*$", ErrorMessage ="Hanya boleh diisi oleh angka")]
         public string Nik { get; set; }
+
+        [Required(ErrorMessage = "Alamat wajib diisi!")]
         public string Alamat { get; set; }
 
         [MinLength(10, ErrorMessage = "No HP minimal 10 angka")]
