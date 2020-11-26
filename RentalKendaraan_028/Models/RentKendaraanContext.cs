@@ -159,9 +159,9 @@ namespace RentalKendaraan_028.Models
 
             modelBuilder.Entity<Peminjaman>(entity =>
             {
-                entity.HasKey(e => e.IdPeminjaman);
+                entity.HasKey(e => e.IdPeminjamanNavigation);
 
-                entity.Property(e => e.IdPeminjaman)
+                entity.Property(e => e.IdPeminjamanNavigation)
                     .HasColumnName("ID_Peminjaman")
                     .ValueGeneratedNever();
 
@@ -190,11 +190,10 @@ namespace RentalKendaraan_028.Models
                     .HasForeignKey(d => d.IdKendaraan)
                     .HasConstraintName("FK_Peminjaman_Kendaraan");
 
-                entity.HasOne(d => d.IdPeminjamanNavigation)
-                    .WithOne(p => p.Peminjaman)
-                    .HasForeignKey<Peminjaman>(d => d.IdPeminjaman)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Peminjaman_Pengembalian");
+                entity.HasOne(d => d.IdKendaraanNavigation)
+                    .WithMany(p => p.Peminjaman)
+                    .HasForeignKey(d => d.IdKendaraan)
+                    .HasConstraintName("FK_Peminjaman_Kendaraan");
             });
 
             modelBuilder.Entity<Pengembalian>(entity =>
